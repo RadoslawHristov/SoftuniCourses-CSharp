@@ -1,56 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace problem2
+namespace firsttask
 {
     class Program
     {
         static void Main(string[] args)
         {
-            List<string> coockis = Console.ReadLine()
-                .Split(", ",StringSplitOptions.RemoveEmptyEntries)
-                .ToList();
-            string input = Console.ReadLine();
-
-            while (input != "No More Money")
+            int bisckuitforday = int.Parse(Console.ReadLine());
+            int wolker = int.Parse(Console.ReadLine());
+            int biscuitkon = int.Parse(Console.ReadLine());
+            double sumbisckuit = 0;
+            int count = 0;
+            double forday = bisckuitforday * wolker;
+            for (int i = 1; i <= 30; i++)
             {
-                string[] comand = input.Split(" ",StringSplitOptions.RemoveEmptyEntries);
-
-                if (comand[0]== "OutOfStock")
+                sumbisckuit += forday;
+                count++;
+                if (count % 3==0)
                 {
-                    if (coockis.Contains(comand[1]))
-                    {
-                        coockis.RemoveAll(x => x == comand[1]);
-                        
-                      
-
-                        //for (int i = 0; i < coockis.Count; i++)
-                        //{
-                        //    for (int j = i; j < coockis.Count-1; j++)
-                        //    {
-                        //        int inx = coockis.IndexOf(comand[1]);
-                        //        coockis.RemoveAt(inx);
-                        //    }
-                        //} 
-                    }
+                    sumbisckuit -= forday-(forday * 0.75);
                 }
-                else if (comand[0]== "Required")
-                {
-                    int ind = int.Parse(comand[2]);
-                    if (ind < coockis.Count && ind >=0)
-                    {
-                        coockis.Insert(ind, comand[1]);
-                        coockis.RemoveAt(ind+1);
-                    }
-                }
-                else if (comand[0]== "Last")
-                {
-                    coockis.Add(comand[1]);
-                }
-                input = Console.ReadLine();
             }
-            Console.WriteLine(string.Join(" ",coockis));
+            double result = Math.Abs(sumbisckuit-biscuitkon);
+            double proceed = (result / biscuitkon * 100);
+            
+            if (sumbisckuit > biscuitkon)
+            {
+                Console.WriteLine($"You have produced {sumbisckuit} biscuits for the past month.");
+                Console.WriteLine($"You produce {proceed:f2} percent more biscuits.");
+            }
+            else
+            {
+                Console.WriteLine($"You have produced {sumbisckuit} biscuits for the past month.");
+                Console.WriteLine($"You produce {proceed:f2} percent less biscuits.");
+            }
         }
     }
 }
