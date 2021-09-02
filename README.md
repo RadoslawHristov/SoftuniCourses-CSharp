@@ -1,7 +1,7 @@
 # SoftuniCourses-CSharp
 HoumWorkAndindividualTask
 -----------------------------------------------------------------
-My certificate Softuni fundamental Module C# May.2021-august 2021
+My certificate Softuni Fundamental Module C# May.2021-august 2021
 
 https://softuni.bg/Certificates/Details/112553/6ce1e2e3
 
